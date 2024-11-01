@@ -1,35 +1,59 @@
 <template>
   <div id="app">
-    <!-- Barra de navegación con enlaces a diferentes rutas -->
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/addtask">Agregar Tarea</router-link> 
+    <nav class="navbar bg-dark">
+      Aplicacion de Tareas
+      <router-link class="navbar-brand" to="/">
+        Gestor de Tareas
+      </router-link>
+
+      <!-- Elementos de navegación -->
+      <div class="nav-links">
+        <router-link class="nav-link" to="/addtask">Añadir Tarea</router-link>
+        <router-link class="nav-link" to="/tasklist">Lista de Tareas</router-link>
+        <router-link class="nav-link" to="/combined">Vista Combinada</router-link>
+      </div>
     </nav>
-    <!-- Aquí se cargará el componente correspondiente a la ruta seleccionada -->
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+.navbar {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #007bff;
+  color: white;
 }
 
-nav a {
+.navbar-brand {
+  color: white;
   font-weight: bold;
-  color: #2c3e50;
+  text-decoration: none;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ffeb3b;
+}
+
+.nav-link.router-link-exact-active {
+  color: #ffeb3b;
 }
 </style>

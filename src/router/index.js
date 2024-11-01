@@ -1,39 +1,46 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import AddTask from '@/views/AddTask.vue';
-// Importa los otros componentes en esta sección
+import HomeView from '@/views/HomeView.vue';
+import CombinedView from '@/views/CombinedView.vue'; // Asegúrate de que la ruta sea correcta
+import AddTask from '@/components/AddTask.vue'; // Asegúrate de que la ruta sea correcta
+import AboutView from '@/views/AboutView.vue'; // Asegúrate de que la ruta sea correcta
+import TaskList from '@/components/TaskList.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    {
+      path: '/',
+      name: 'Home',
+      component: HomeView,
+    },
+    {
+      path: '/tasklist', // Agregada ruta para la lista de tareas
+      name: 'TaskList',
+      component: TaskList, // Componente que se cargará en esta ruta
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }, 
-  {
-    path: '/addtask',
-    name: 'AddTask', // Ruta para añadir tareas
-    component: AddTask // Aquí se debe cargar el componente AddTask
-    // Implementa la lógica para añadir nuevas tareas.
-  },
-
-  // Las demás rutas deben ir aquí también
+    {
+      path: '/combined',
+      name: 'CombinedView',
+      component: CombinedView,
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: AboutView,
+    },
+    {
+      path: '/addtask',
+      name: 'AddTask',
+      component: AddTask,
+    },
+    // Puedes añadir más rutas si es necesario
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
